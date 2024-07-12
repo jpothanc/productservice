@@ -16,4 +16,16 @@ public class EquityService {
     public List<Equity> getAllPersons() {
         return equityRepository.findAll();
     }
+
+    public Equity getPersonById(Long id) {
+        return equityRepository.findById(id).orElse(null);
+    }
+
+    public Equity savePerson(Equity equity) {
+        return equityRepository.save(equity);
+    }
+
+    public void deletePerson(Long id) {
+        equityRepository.deleteById(id);
+    }
 }

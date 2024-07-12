@@ -24,11 +24,15 @@ repositories {
 }
 
 dependencies {
+	//spring dependencies
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	//database dependencies
 	implementation 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//password encryption
 	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
+	//swagger dependencies
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
