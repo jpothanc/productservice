@@ -1,0 +1,61 @@
+# Gradle
+.gradle/
+build/
+
+# Ignore Gradle wrapper jar file
+gradle/wrapper/gradle-wrapper.jar
+
+# Project specific
+*.iml
+.idea/
+out/
+*.ipr
+*.iws
+*.swp
+*~
+.DS_Store
+.vscode/
+
+# Ignore log files and OS generated files
+*.log
+*.tmp
+*.temp
+*.swp
+*~ 
+
+# Ignore IDE project files
+*.idea
+.idea/
+*.project
+*.classpath
+
+# Ignore build outputs
+/build/
+out/
+target/
+
+# Ignore temporary files
+*.class
+*.log
+*.swp
+*.swo
+*~
+.*.swp
+
+# Ignore JAR, WAR, and other archives
+*.jar
+*.war
+*.ear
+*.zip
+
+# Ignore dependencies
+lib/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore user-specific files
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
