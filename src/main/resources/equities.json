@@ -1,0 +1,212 @@
+[
+  {
+    "productCode": "0001.HK",
+    "stockName": "CK Hutchison Holdings",
+    "primaryExchange": "HKSE",
+    "lotSize": 500,
+    "lastClosePrice": 5635,
+    "currency": "HKD",
+    "day20AverageVolume": 2000000,
+    "day30AverageVolume": 2500000
+  },
+  {
+    "productCode": "0002.HK",
+    "stockName": "CLP Holdings Limited",
+    "primaryExchange": "HKSE",
+    "lotSize": 1000,
+    "lastClosePrice": 7520,
+    "currency": "HKD",
+    "day20AverageVolume": 1500000,
+    "day30AverageVolume": 1800000
+  },
+  {
+    "productCode": "0003.HK",
+    "stockName": "The Hong Kong and China Gas Company Limited",
+    "primaryExchange": "HKSE",
+    "lotSize": 500,
+    "lastClosePrice": 1288,
+    "currency": "HKD",
+    "day20AverageVolume": 2500000,
+    "day30AverageVolume": 3000000
+  },
+  {
+    "productCode": "0004.HK",
+    "stockName": "The Wharf (Holdings) Limited",
+    "primaryExchange": "HKSE",
+    "lotSize": 500,
+    "lastClosePrice": 1850,
+    "currency": "HKD",
+    "day20AverageVolume": 1200000,
+    "day30AverageVolume": 1500000
+  },
+  {
+    "productCode": "0005.HK",
+    "stockName": "HSBC Holdings plc",
+    "primaryExchange": "HKSE",
+    "lotSize": 400,
+    "lastClosePrice": 4255,
+    "currency": "HKD",
+    "day20AverageVolume": 3000000,
+    "day30AverageVolume": 3500000
+  },
+  {
+    "productCode": "0006.HK",
+    "stockName": "Power Assets Holdings Limited",
+    "primaryExchange": "HKSE",
+    "lotSize": 500,
+    "lastClosePrice": 5310,
+    "currency": "HKD",
+    "day20AverageVolume": 1000000,
+    "day30AverageVolume": 1200000
+  },
+  {
+    "productCode": "0007.HK",
+    "stockName": "Hong Kong Finance Investment Holding Group Limited",
+    "primaryExchange": "HKSE",
+    "lotSize": 1000,
+    "lastClosePrice": 82,
+    "currency": "HKD",
+    "day20AverageVolume": 500000,
+    "day30AverageVolume": 600000
+  },
+  {
+    "productCode": "0008.HK",
+    "stockName": "PCCW Limited",
+    "primaryExchange": "HKSE",
+    "lotSize": 500,
+    "lastClosePrice": 467,
+    "currency": "HKD",
+    "day20AverageVolume": 1800000,
+    "day30AverageVolume": 2000000
+  },
+  {
+    "productCode": "0009.HK",
+    "stockName": "Nine Express Limited",
+    "primaryExchange": "HKSE",
+    "lotSize": 1000,
+    "lastClosePrice": 95,
+    "currency": "HKD",
+    "day20AverageVolume": 400000,
+    "day30AverageVolume": 450000
+  },
+  {
+    "productCode": "0010.HK",
+    "stockName": "Hang Lung Group",
+    "primaryExchange": "HKSE",
+    "lotSize": 500,
+    "lastClosePrice": 1734,
+    "currency": "HKD",
+    "day20AverageVolume": 2200000,
+    "day30AverageVolume": 2700000
+  },
+  {
+    "productCode": "7203.T",
+    "stockName": "Toyota Motor Corp",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 8000,
+    "currency": "JPY",
+    "day20AverageVolume": 5000000,
+    "day30AverageVolume": 5500000
+  },
+  {
+    "productCode": "6758.T",
+    "stockName": "Sony Group Corp",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 11000,
+    "currency": "JPY",
+    "day20AverageVolume": 3000000,
+    "day30AverageVolume": 3200000
+  },
+  {
+    "productCode": "9984.T",
+    "stockName": "SoftBank Group Corp",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 7000,
+    "currency": "JPY",
+    "day20AverageVolume": 4000000,
+    "day30AverageVolume": 4200000
+  },
+  {
+    "productCode": "7974.T",
+    "stockName": "Nintendo Co Ltd",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 50000,
+    "currency": "JPY",
+    "day20AverageVolume": 2500000,
+    "day30AverageVolume": 2600000
+  },
+  {
+    "productCode": "8306.T",
+    "stockName": "Mitsubishi UFJ Financial Group",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 600,
+    "currency": "JPY",
+    "day20AverageVolume": 8000000,
+    "day30AverageVolume": 8500000
+  },
+  {
+    "productCode": "9432.T",
+    "stockName": "Nippon Telegraph and Telephone Corp",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 3000,
+    "currency": "JPY",
+    "day20AverageVolume": 2000000,
+    "day30AverageVolume": 2200000
+  },
+  {
+    "productCode": "6861.T",
+    "stockName": "Keyence Corp",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 60000,
+    "currency": "JPY",
+    "day20AverageVolume": 1000000,
+    "day30AverageVolume": 1050000
+  },
+  {
+    "productCode": "9983.T",
+    "stockName": "Fast Retailing Co Ltd",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 88000,
+    "currency": "JPY",
+    "day20AverageVolume": 500000,
+    "day30AverageVolume": 550000
+  },
+  {
+    "productCode": "8035.T",
+    "stockName": "Tokyo Electron Ltd",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 42000,
+    "currency": "JPY",
+    "day20AverageVolume": 1500000,
+    "day30AverageVolume": 1600000
+  },
+  {
+    "productCode": "6098.T",
+    "stockName": "Recruit Holdings Co Ltd",
+    "primaryExchange": "TSE",
+    "lotSize": 100,
+    "lastClosePrice": 3500,
+    "currency": "JPY",
+    "day20AverageVolume": 2000000,
+    "day30AverageVolume": 2100000
+  },
+  {
+    "productCode": "XYZ123",
+    "stockName": "Example Corp",
+    "primaryExchange": "NYSE",
+    "lotSize": 100,
+    "lastClosePrice": 150,
+    "currency": "USD",
+    "day20AverageVolume": 500000,
+    "day30AverageVolume": 450000
+  }
+]

@@ -34,6 +34,13 @@ dependencies {
 	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
 	//swagger dependencies
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+    //async dependencies
+//	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+//	implementation 'org.postgresql:r2dbc-postgresql'
+	//implementation 'io.r2dbc:r2dbc-bom'
+	//Reactive extensions
+	implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

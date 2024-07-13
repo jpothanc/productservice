@@ -1,0 +1,5 @@
+service:
+  bindings:
+    - service: com.ib.it.productservice.repository.EquityRepository
+      implementation: com.ib.it.productservice.repository.EquityDiskRepositoryImpl
+      scope: prototype

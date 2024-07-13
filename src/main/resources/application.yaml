@@ -12,3 +12,19 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  r2dbc:
+    url: r2dbc:postgresql://ep-white-forest-89963536.ap-southeast-1.aws.neon.tech/productstore?sslmode=require
+    username: jpothanc
+    password: ENC(jpTpWq9eiIlAANEIob6IGEGKD2WB20VdYQitNvGlcdyqXL8pRNk33cPj+64CiLW2)
+
+  flyway:
+    url: jdbc:postgresql://ep-white-forest-89963536.ap-southeast-1.aws.neon.tech/productstore?sslmode=require
+    username: jpothanc
+    password: ENC(jpTpWq9eiIlAANEIob6IGEGKD2WB20VdYQitNvGlcdyqXL8pRNk33cPj+64CiLW2)
+
+service:
+  bindings:
+    - service: com.ib.it.productservice.repository.EquityRepository
+      implementation: com.ib.it.productservice.repository.EquityDbRepositoryImpl
+      scope: singleton

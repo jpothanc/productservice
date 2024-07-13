@@ -1,31 +1,35 @@
 package com.ib.it.productservice.services;
 
+import com.ib.it.productservice.config.CustomQualifier;
 import com.ib.it.productservice.models.Equity;
+import com.ib.it.productservice.models.QueryResponse;
 import com.ib.it.productservice.repository.EquityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class EquityService {
+    private final EquityRepository equityRepository;
 
     @Autowired
-    private EquityRepository equityRepository;
-
-    public List<Equity> getAllPersons() {
-        return equityRepository.findAll();
+    public EquityService(@CustomQualifier("EquityRepository") EquityRepository equityRepository) {
+        this.equityRepository = equityRepository;
     }
 
-    public Equity getPersonById(Long id) {
-        return equityRepository.findById(id).orElse(null);
-    }
-
-    public Equity savePerson(Equity equity) {
-        return equityRepository.save(equity);
-    }
-
-    public void deletePerson(Long id) {
-        equityRepository.deleteById(id);
+    public CompletableFuture<QueryResponse> getAll() {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                var result =  equityRepository.findAll();
+                if(result.getData() == null || result.getData().isEmpty()) {
+                    throw new NoSuchElementException("No data found");
+                }
+                return result;
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to fetch equities", e);
+            }
+        });
     }
 }
