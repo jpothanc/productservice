@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface EquityRepository {
     QueryResponse findAll();
+    QueryResponse findById(String productCode);
 }

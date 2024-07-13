@@ -32,4 +32,18 @@ public class EquityService {
             }
         });
     }
+
+    public CompletableFuture<QueryResponse> getEquity(String productCode) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                var result =  equityRepository.findById(productCode);
+                if(result.getData() == null || result.getData().isEmpty()) {
+                    throw new NoSuchElementException("No data found");
+                }
+                return result;
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to fetch equities", e);
+            }
+        });
+    }
 }

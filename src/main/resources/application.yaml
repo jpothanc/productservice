@@ -1,3 +1,6 @@
+app:
+  equities-disk-file: equities.json
+
 spring:
   datasource:
     url: jdbc:postgresql://ep-white-forest-89963536.ap-southeast-1.aws.neon.tech/productstore?sslmode=require
@@ -26,5 +29,5 @@ spring:
 service:
   bindings:
     - service: com.ib.it.productservice.repository.EquityRepository
-      implementation: com.ib.it.productservice.repository.EquityDbRepositoryImpl
-      scope: singleton
+      implementation: com.ib.it.productservice.repository.EquityDiskRepositoryImpl
+      scope: sinlgeton
