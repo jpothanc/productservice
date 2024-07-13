@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@JsonPropertyOrder({"source","records","timeStamp", "data"})
+@JsonPropertyOrder({"source", "records", "timeStamp", "data"})
 public class QueryResponse<T> {
     private List<T> data;
     private String source;
@@ -26,7 +26,7 @@ public class QueryResponse<T> {
 
         public Builder<T> setData(List<T> data) {
             instance.data = data;
-            if(instance.data != null)
+            if (instance.data != null)
                 instance.records = instance.data.size();
             return this;
         }
