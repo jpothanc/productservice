@@ -9,4 +9,10 @@ import java.util.List;
 public interface EquityRepository {
     QueryResponse findAll();
     QueryResponse findById(String productCode);
+
+    QueryResponse save(Equity equity);
+
+    QueryResponse deleteById(String productCode);
+
+    QueryResponse updateById(String productCode, Equity equity);
 }

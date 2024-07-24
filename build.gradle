@@ -40,7 +40,7 @@ dependencies {
 	//implementation 'io.r2dbc:r2dbc-bom'
 	//Reactive extensions
 	implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
-	implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
+	implementation 'com.fasterxml.jackson.core:jackson-core:2.17.0'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -51,6 +51,14 @@ dependencies {
 	// Cucumber dependencies
 	testImplementation 'io.cucumber:cucumber-java:7.18.0'
 	testImplementation 'io.cucumber:cucumber-junit:7.18.0'
+
+	// Testcontainers dependencies
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:postgresql'
+	testImplementation 'org.springframework:spring-webflux'
+
+
 }
 
 tasks.named('test') {

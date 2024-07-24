@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -28,14 +29,13 @@ public class EquityDiskRepositoryImpl implements EquityRepository {
         this.resourceLoader = resourceLoader;
         this.environment = environment;
         System.out.println("EquityDiskRepositoryImpl created");
+        if (cachedEquities == null || cachedEquities.isEmpty())
+            loadEquities();
     }
 
     @Override
     public QueryResponse findAll() {
-
-        if (cachedEquities == null || cachedEquities.isEmpty())
-            loadEquities();
-
+        var v = cachedEquities.values().stream().toList();
         return new QueryResponse.Builder<Equity>()
                 .setData(cachedEquities.values().stream().toList())
                 .setSource("disk")
@@ -52,6 +52,38 @@ public class EquityDiskRepositoryImpl implements EquityRepository {
                 .build();
     }
 
+    @Override
+    public QueryResponse save(Equity equity) {
+        cachedEquities.remove(equity.getProductCode());
+        cachedEquities.put(equity.getProductCode(),equity);
+       return new QueryResponse.Builder<Equity>()
+               .setData(List.of(equity))
+               .setSource("disk")
+               .setTimeStamp(LocalDateTime.now().format(DATE_FORMATTER))
+               .build();
+    }
+
+    @Override
+    public QueryResponse deleteById(String productCode) {
+        cachedEquities.remove(productCode);
+        return new QueryResponse.Builder<Equity>()
+                .setData(null)
+                .setSource("db")
+                .setTimeStamp(LocalDateTime.now().format(DATE_FORMATTER))
+                .build();
+    }
+
+    @Override
+    public QueryResponse updateById(String productCode, Equity equity) {
+        cachedEquities.remove(productCode);
+        cachedEquities.put(productCode,equity);
+        return new QueryResponse.Builder<Equity>()
+                .setData(List.of(equity))
+                .setSource("disk")
+                .setTimeStamp(LocalDateTime.now().format(DATE_FORMATTER))
+                .build();
+    }
+
     private void loadEquities() {
         System.out.println("Loading equities from disk");
         String equitiesDiskFile = environment.getProperty("app.equities-disk-file");
@@ -61,7 +93,7 @@ public class EquityDiskRepositoryImpl implements EquityRepository {
             String dataFile = "classpath:" + equitiesDiskFile;
             Resource resource = resourceLoader.getResource(dataFile);
             equities= objectMapper.readValue(resource.getInputStream(),
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, Equity.class));
+                    objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Equity.class));
             cachedEquities = equities.stream().collect(Collectors.toMap(Equity::getProductCode, equity -> equity));
 
         } catch (IOException e) {

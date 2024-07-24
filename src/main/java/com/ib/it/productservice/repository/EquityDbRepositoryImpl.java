@@ -35,4 +35,29 @@ public class EquityDbRepositoryImpl implements EquityRepository{
                 .setTimeStamp(LocalDateTime.now().format(DATE_FORMATTER))
                 .build();
     }
+    public QueryResponse save(Equity equity) {
+        return new QueryResponse.Builder<Equity>()
+                .setData(List.of(equityRepository.save(equity)))
+                .setSource("db")
+                .setTimeStamp(LocalDateTime.now().format(DATE_FORMATTER))
+                .build();
+    }
+     public QueryResponse deleteById(String productCode) {
+         equityRepository.deleteById(productCode);
+         return new QueryResponse.Builder<Equity>()
+                 .setData(null)
+                 .setSource("db")
+                 .setTimeStamp(LocalDateTime.now().format(DATE_FORMATTER))
+                 .build();
+     }
+
+     public QueryResponse updateById(String productCode, Equity equity) {
+         equityRepository.deleteById(productCode);
+         return new QueryResponse.Builder<Equity>()
+                 .setData(List.of(equityRepository.save(equity)))
+                 .setSource("db")
+                 .setTimeStamp(LocalDateTime.now().format(DATE_FORMATTER))
+                 .build();
+     }
+
 }

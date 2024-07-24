@@ -1,20 +1,15 @@
 package com.ib.it.productservice.controllers;
 
+import com.ib.it.productservice.models.Equity;
 import com.ib.it.productservice.models.QueryResponse;
 import com.ib.it.productservice.services.EquityService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
-
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/v1/equity")
@@ -26,27 +21,54 @@ public class EquityController {
 
     @Operation(summary = "Get All Equity Products", description = "Get All Equity Products")
     @ApiResponse(responseCode = "200", description = "Successful operation")
+    @ApiResponse(responseCode = "404", description = "No data found")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @GetMapping("/products")
     public Mono<ResponseEntity<QueryResponse>> getAll() {
 
         return Mono.fromFuture(() -> equityService.getAll())
-                .map(ResponseEntity::ok)
-                .onErrorResume(NoSuchElementException.class, e ->
-                        Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).build())
-                ).onErrorResume(Exception.class, e ->
-                        Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()));
+                .map(ResponseEntity::ok);
 
     }
 
     @Operation(summary = "Get Equity Product by Product Code", description = "Get Equity Product by Product Code")
     @ApiResponse(responseCode = "200", description = "Successful operation")
+    @ApiResponse(responseCode = "404", description = "No data found")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @GetMapping("/{product}")
-    public Mono<ResponseEntity<QueryResponse>> getEquity(@RequestParam  String code) {
-        return Mono.fromFuture(() -> equityService.getEquity(code))
-                .map(ResponseEntity::ok)
-                .onErrorResume(NoSuchElementException.class, e ->
-                        Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).build())
-                ).onErrorResume(Exception.class, e ->
-                        Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()));
+    public Mono<ResponseEntity<QueryResponse>> getEquity(@RequestParam String productCode) {
+        return Mono.fromFuture(() -> equityService.getEquity(productCode))
+                .map(ResponseEntity::ok);
+
     }
+
+    @Operation(summary = "Save Equity Product", description = "Save Equity Product")
+    @ApiResponse(responseCode = "200", description = "Successful operation")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    @PutMapping("/save")
+    public Mono<ResponseEntity<QueryResponse>> saveEquity(@ModelAttribute Equity equity) {
+        return Mono.fromFuture(() -> equityService.saveEquity(equity))
+                .map(ResponseEntity::ok);
+
+    }
+
+    @Operation(summary = "Update Equity Product", description = "Update Equity Product")
+    @ApiResponse(responseCode = "200", description = "Successful operation")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    @PutMapping("/update")
+    public Mono<ResponseEntity<QueryResponse>> updateEquity(@RequestParam String code, @ModelAttribute Equity equity) {
+        return Mono.fromFuture(() -> equityService.updateEquity(code, equity))
+                .map(ResponseEntity::ok);
+
+    }
+
+    @Operation(summary = "Delete Equity Product", description = "Delete Equity Product")
+    @ApiResponse(responseCode = "200", description = "Successful operation")
+    @DeleteMapping("/delete")
+    public Mono<ResponseEntity<QueryResponse>> deleteEquity(@RequestParam String code) {
+        return Mono.fromFuture(() -> equityService.deleteEquity(code))
+                .map(ResponseEntity::ok);
+
+    }
+
 }

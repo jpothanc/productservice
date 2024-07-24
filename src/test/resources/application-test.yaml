@@ -16,7 +16,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-
 service:
   bindings:
     - service: com.ib.it.productservice.repository.EquityRepository

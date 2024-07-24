@@ -5,6 +5,8 @@ import com.ib.it.productservice.models.QueryResponse;
 import com.ib.it.productservice.repository.EquityDiskRepositoryImpl;
 import com.ib.it.productservice.services.EquityService;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -42,25 +44,23 @@ public class EquityServiceTest {
                         .build();
 
 
-        when(equityDiskRepository.findAll()).thenReturn(mockProducts);
+        given(equityDiskRepository.findAll()).willReturn(mockProducts);
 
-        // Call the service method
+        // When
         QueryResponse response = null;
         try {
             response = equityService.getAll().get();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
+        } catch (InterruptedException  | ExecutionException e) {
             throw new RuntimeException(e);
         }
 
-        // Verify the result
+
+        // Then
+        then(equityDiskRepository).should(times(1)).findAll();
         assertEquals(1, response.getRecords());
         List<Equity> equities = response.getData();
         assertEquals("Product 1", equities.get(0).getStockName());
 
-        // Verify that repository method was called once
-        verify(equityDiskRepository, times(1)).findAll();
     }
 
 }

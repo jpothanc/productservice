@@ -22,8 +22,8 @@ public class EquityService {
     public CompletableFuture<QueryResponse> getAll() {
         return CompletableFuture.supplyAsync(() -> {
             try {
-                var result =  equityRepository.findAll();
-                if(result.getData() == null || result.getData().isEmpty()) {
+                var result = equityRepository.findAll();
+                if (result.getData() == null || result.getData().isEmpty()) {
                     throw new NoSuchElementException("No data found");
                 }
                 return result;
@@ -35,15 +35,37 @@ public class EquityService {
 
     public CompletableFuture<QueryResponse> getEquity(String productCode) {
         return CompletableFuture.supplyAsync(() -> {
-            try {
-                var result =  equityRepository.findById(productCode);
-                if(result.getData() == null || result.getData().isEmpty()) {
-                    throw new NoSuchElementException("No data found");
-                }
-                return result;
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to fetch equities", e);
+            var result = equityRepository.findById(productCode);
+            if (result.getData() == null || result.getData().isEmpty()) {
+                throw new NoSuchElementException("No data found");
             }
+            return result;
+        }).exceptionally(e -> {
+            if (e.getCause() instanceof NoSuchElementException) {
+                throw new NoSuchElementException("No data found");
+            }
+            throw new RuntimeException("Failed to fetch equity", e);
+        });
+    }
+
+    public CompletableFuture<QueryResponse> saveEquity(Equity equity) {
+        return CompletableFuture.supplyAsync(() -> equityRepository.save(equity)
+        ).exceptionally(e -> {
+            throw new RuntimeException("Failed to save equity", e);
+        });
+    }
+
+    public CompletableFuture<QueryResponse> deleteEquity(String productCode) {
+        return CompletableFuture.supplyAsync(() -> equityRepository.deleteById(productCode)
+        ).exceptionally(e -> {
+            throw new RuntimeException("Failed to delete equity", e);
+        });
+    }
+
+    public CompletableFuture<QueryResponse> updateEquity(String productCode, Equity equity) {
+        return CompletableFuture.supplyAsync(() -> equityRepository.updateById(productCode, equity)
+        ).exceptionally(e -> {
+            throw new RuntimeException("Failed to update equity", e);
         });
     }
 }

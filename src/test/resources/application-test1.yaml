@@ -1,0 +1,18 @@
+app:
+  equities-disk-file: equities.json
+
+spring:
+  datasource:
+      url: jdbc:tc:postgresql:9.6.8:///equity
+      username: user
+      password: password
+      driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+      jpa:
+        hibernate:
+          ddl-auto: create-drop
+
+service:
+  bindings:
+    - service: com.ib.it.productservice.repository.EquityRepository
+      implementation: com.ib.it.productservice.repository.EquityDbRepositoryImpl
+      scope: singleton

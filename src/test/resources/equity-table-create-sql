@@ -1,0 +1,16 @@
+-- Create the equity table
+CREATE TABLE equity (
+    product_code VARCHAR(50) PRIMARY KEY,
+    currency VARCHAR(10),
+    day_20_average_volume DECIMAL(15, 2),
+    day_30_average_volume DECIMAL(15, 2),
+    last_close_price DECIMAL(15, 2),
+    lot_size INT,
+    primary_exchange VARCHAR(50),
+    stock_name VARCHAR(100)
+);
+
+-- Insert data into the equity table
+INSERT INTO equity (product_code, currency, day_20_average_volume, day_30_average_volume, last_close_price, lot_size, primary_exchange, stock_name)
+VALUES ('0005.HK', 'HKD', 1000000.00, 1500000.00, 50.75, 500, 'HKEX', 'HSBC Holdings plc');
+
