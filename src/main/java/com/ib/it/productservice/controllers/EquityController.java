@@ -45,8 +45,8 @@ public class EquityController {
     @Operation(summary = "Save Equity Product", description = "Save Equity Product")
     @ApiResponse(responseCode = "200", description = "Successful operation")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @PutMapping("/save")
-    public Mono<ResponseEntity<QueryResponse>> saveEquity(@ModelAttribute Equity equity) {
+    @PostMapping("/create")
+    public Mono<ResponseEntity<QueryResponse>> createEquity(@ModelAttribute Equity equity) {
         return Mono.fromFuture(() -> equityService.saveEquity(equity))
                 .map(ResponseEntity::ok);
 

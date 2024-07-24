@@ -56,7 +56,7 @@ public class EquityDiskRepositoryImpl implements EquityRepository {
     public QueryResponse save(Equity equity) {
         cachedEquities.remove(equity.getProductCode());
         cachedEquities.put(equity.getProductCode(),equity);
-       return new QueryResponse.Builder<Equity>()
+        return new QueryResponse.Builder<Equity>()
                .setData(List.of(equity))
                .setSource("disk")
                .setTimeStamp(LocalDateTime.now().format(DATE_FORMATTER))
